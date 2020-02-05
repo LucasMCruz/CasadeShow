@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf-extras-springsecurity4"
+	layout:decorate="Padrao">
+
+<head>
+	
+	<title>Casa de show</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../fontawesome-free-5.12.0-web/css/all.css" type="text/css">
+	
+
+	<!-- =======================================================
+    Theme Name: Maxim
+    Theme URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
+    Author: BootstrapMade.com
+    Author URL: https://bootstrapmade.com
+	======================================================= -->
+</head>
+<section layout:fragment="conteudo">
+
+	
+		<div class="card container-fluid">
+		  <div class="card-header">
+		    Criar Evento
+		  </div>
+			<div class="card-body">
+				<div class="form-group row">
+					<label for="inputDescricao"
+						class="text-left  col-sm-2 col-form-label tamanholabel">Descrição:</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control " id="inputDescricao" name="descricao"
+							placeholder="ex: Nome.">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputValor"
+						class="text-left  col-sm-2 col-form-label tamanholabel">Valor do ingresso:</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control " id="inputValor" name="valor">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputValor"
+						class="col-sm-2 col-form-label tamanholabel">Data do show:</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control " id="inputDescricao" name="dataShow"
+							placeholder="dd/mm/yyyy">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-from-lobel tamanholabel" for="exampleFormControlSelect1">Select:</label>
+					    <select class="form-control col-sm-4" id="exampleFormControlSelect1">
+					      <option>Reservado</option>
+					      <option>Comprado</option>
+					    </select>
+					 
+				</div>
+				<input class="btn btn-primary col-off-set-3" type="submit" value="Submit">	
+			</div>
+		</div>
+				
+	
+</section>
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+</html>
