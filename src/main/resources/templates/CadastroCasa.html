@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf-extras-springsecurity4"
+	layout:decorate="Padrao">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link href="../fontawesome-free-5.12.0-web/css/all.css" rel="stylesheet">
+
+</head>
+
+
+<section layout:fragment="conteudo">
+	<div class="m-8">
+		  <div class="logo text-center ">
+				<h2>Casa de Show</h2>
+			</div>
+		
+			<div class="form-group row m-5">
+				<label for="inputDescricao"
+						class="text-leftcol-form-label col-sm-1 tamanholabel">Descrição:</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control " id=" inputDescricao" name="descricao"
+						placeholder="ex: Nome.">
+					</div>
+				</div>
+				
+				<div class="form-group row m-5">
+					<label for="inputValor"
+						class="col-sm-1 col-form-label tamanholabel">Endereço:</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control " id="inputDescricao" name="dataShow"
+							placeholder="Av. Rua. Alameda...">
+					</div>
+				</div>
+				<input class="btn btn-primary" type="submit" value="Submit">	
+			
+		</div>
+
+
+
+
+
+</section>
+</html>

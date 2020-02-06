@@ -14,8 +14,8 @@ public class MemorySecurity{
 	public void configureGlobal(AuthenticationManagerBuilder builder) throws Exception{
 		builder
 			.inMemoryAuthentication()
-			.withUser("carlos").password("123").roles("PG_REL_EQUIPE")
+			.withUser("carlos").password("{noop}123").roles("PG_REL_EQUIPE")
 			.and()
-			.withUser("flavio").password("123").roles("PG_REL_EQUIPE");
+			.withUser("flavio").password("{noop}123").roles("PG_REL_EQUIPE");
 	}
 }*/

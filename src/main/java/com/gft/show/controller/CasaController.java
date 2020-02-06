@@ -19,28 +19,28 @@ public class CasaController {
 		return "cadastro";
 	}
 	
-	@RequestMapping (method = RequestMethod.GET, path = "/casashow")
+	@RequestMapping (method = RequestMethod.GET, path = "/")
 	public String Menu() {
 		
-		return "CadastroEvento";
+		return "Home";
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, path = "/casashow/home")
+	@RequestMapping(method = RequestMethod.GET, path = "/home")
 	public String Sobre() {
 		return "Home";
 	}
-	@RequestMapping(method = RequestMethod.GET, path = "/casashow/casas")
+	@RequestMapping(method = RequestMethod.GET, path = "/casas")
 	public String Skill() {
-		return "CadastroEvento";
+		return "Cadastrocasa";
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, path = "/casashow/eventos")
+	@RequestMapping(method = RequestMethod.GET, path = "/eventos")
 	public String Work() {
-		return "CadastroTitulo";
+		return "CadastroEvento";
 	}
-	@RequestMapping(method = RequestMethod.GET, path = "/casashow/historico")
+	@RequestMapping(method = RequestMethod.GET, path = "/historico")
 	public String LifeStyle() {
-		return "PesquisaEvento";
+		return "Historico";
 	}
 	
 	@RequestMapping(value="/casashow/evento", method = RequestMethod.POST)
