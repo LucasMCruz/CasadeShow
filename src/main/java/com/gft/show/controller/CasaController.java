@@ -29,11 +29,7 @@ public class CasaController {
 	public String Sobre() {
 		return "Home";
 	}
-	@RequestMapping(method = RequestMethod.GET, path = "/casas")
-	public String Skill() {
-		return "Cadastrocasa";
-	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, path = "/eventos")
 	public String Work() {
 		return "CadastroEvento";
@@ -43,9 +39,5 @@ public class CasaController {
 		return "Historico";
 	}
 	
-	@RequestMapping(value="/casashow/evento", method = RequestMethod.POST)
-	public void salvar(CasaShow casaShow) {
-		//Salvar no banco de dados
-		
-	}
+	
 }

@@ -1,4 +1,4 @@
-package com.gft.show.config;
+package com.gft.show.model;
 
 import java.util.Collection;
 import java.util.Collections;

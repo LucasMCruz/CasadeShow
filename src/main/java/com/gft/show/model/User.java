@@ -1,4 +1,4 @@
-package com.gft.show.config;
+package com.gft.show.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

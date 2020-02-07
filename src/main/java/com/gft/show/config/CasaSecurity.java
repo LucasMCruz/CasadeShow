@@ -41,8 +41,9 @@ public class CasaSecurity extends WebSecurityConfigurerAdapter {
 		http
 			.csrf().disable()
 			.authorizeRequests()
-			.antMatchers("/home").hasAnyRole("PG_HOME")
+			.antMatchers("/home").permitAll()
 			.antMatchers("/casas").hasAnyRole("PG_CASAS")
+			.antMatchers("/venda").hasAnyRole("PG_VENDA")
 			.antMatchers("/evento").hasAnyRole("PG_EVENTOS")
 			.antMatchers("/historico").hasAnyRole("PG_HISTORICO")
 			.antMatchers("/entrar").permitAll()
@@ -67,9 +68,9 @@ public class CasaSecurity extends WebSecurityConfigurerAdapter {
 	public void configureGlobal(AuthenticationManagerBuilder builder) throws Exception{
 		builder
 			.inMemoryAuthentication()
-			.withUser("carlos").password("{noop}123").roles("PG_EVENTO", "PG_HISTORICO", "PG_CASAS", "PG_HOME")
+			.withUser("carlos").password("{noop}123").roles("PG_EVENTO", "PG_HISTORICO", "PG_CASAS", "PG_VENDA")
 			.and()
-			.withUser("flavio").password("{noop}123").roles("PG_HOME");
+			.withUser("flavio").password("{noop}123").roles("PG_HISTORICO").roles("PG_VENDA");
 	}
 	/*@Bean
 	@Override

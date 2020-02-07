@@ -14,58 +14,54 @@ import javax.persistence.TemporalType;
 public class CasaShow {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long codigo;
+	private Long codigo;
 	
 	
-	private String descricao;
+	private String nome;
 	
 	
-	private BigDecimal valor;
-	
-	
-	@Temporal(TemporalType.DATE)
-	private Date dataShow;
-	
-	
-	private StatusEvento status;
-	
-	
-	public String getDescricao() {
-		return descricao;
-		
+	private String endereco;
+
+
+	public Long getCodigo() {
+		return codigo;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+
+
+	public void setCodigo(long codigo) {
+		this.codigo = codigo;
 	}
-	public BigDecimal getValor() {
-		return valor;
+
+
+	public String getNome() {
+		return nome;
 	}
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-	public Date getDataShow() {
-		return dataShow;
+
+
+	public String getEndereco() {
+		return endereco;
 	}
-	public void setDataShow(Date dataShow) {
-		this.dataShow = dataShow;
+
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
-	public StatusEvento getStatus() {
-		return status;
-	}
-	public void setStatus(StatusEvento status) {
-		this.status = status;
-	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (int) (codigo ^ (codigo >>> 32));
-		result = prime * result + ((dataShow == null) ? 0 : dataShow.hashCode());
-		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + ((valor == null) ? 0 : valor.hashCode());
 		return result;
 	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -77,33 +73,11 @@ public class CasaShow {
 		CasaShow other = (CasaShow) obj;
 		if (codigo != other.codigo)
 			return false;
-		if (dataShow == null) {
-			if (other.dataShow != null)
-				return false;
-		} else if (!dataShow.equals(other.dataShow))
-			return false;
-		if (descricao == null) {
-			if (other.descricao != null)
-				return false;
-		} else if (!descricao.equals(other.descricao))
-			return false;
-		if (status != other.status)
-			return false;
-		if (valor == null) {
-			if (other.valor != null)
-				return false;
-		} else if (!valor.equals(other.valor))
-			return false;
 		return true;
 	}
-	public long getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(long codigo) {
-		this.codigo = codigo;
-	}
+
+
+	
 	
 	
 }
-
-
