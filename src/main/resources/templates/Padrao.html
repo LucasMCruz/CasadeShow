@@ -34,7 +34,7 @@
 				<ul id="menu-main" class="navbar-nav ">
 					<li sec:authorize ="hasRole('PG_HOME')" class="nav-item active"><a class="nav-link" title="about" href="/home" >Home</a>
 					<li class="nav-item active" sec:authorize ="hasRole('PG_CASAS')"><a class="nav-link" title="Casas" href="/casas">Casas de shows</a></li>
-					<li class="nav-item active" sec:authorize ="hasRole('PG_EVENTO')"><a  class="nav-link" title="Eventos" href="/evento">Eventos</a></li>
+					<li class="nav-item active" sec:authorize ="hasRole('PG_EVENTO')"><a  class="nav-link" title="Eventos" href="/eventos">Eventos</a></li>
 					<li class="nav-item active" sec:authorize="hasRole('PG_HISTORICO')"><a  class="nav-link" title="Historico" href="/historico">Historico</a></li>
 					<li class="nav-item active"><a  class="nav-link" title="Sair" href="/logout">LogOut</a></li>
 				</ul>
@@ -47,8 +47,11 @@
 	<section layout:fragment="conteudo">
 		<p> Conteudo Principal</p>
 	</section>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/btn.js"></script>
 
-<script src="/js/bootstrap.min.js"></script>
+
 
 </body>
 </html>

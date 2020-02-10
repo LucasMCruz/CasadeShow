@@ -4,8 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.gft.show.model.CasaShow;
-
 @Controller
 
 public class CasaController {
@@ -30,10 +28,6 @@ public class CasaController {
 		return "Home";
 	}
 
-	@RequestMapping(method = RequestMethod.GET, path = "/eventos")
-	public String Work() {
-		return "CadastroEvento";
-	}
 	@RequestMapping(method = RequestMethod.GET, path = "/historico")
 	public String LifeStyle() {
 		return "Historico";

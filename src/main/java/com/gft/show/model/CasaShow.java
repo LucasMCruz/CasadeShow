@@ -1,17 +1,14 @@
 package com.gft.show.model;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class CasaShow {
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
@@ -22,15 +19,16 @@ public class CasaShow {
 	
 	private String endereco;
 
-
 	public Long getCodigo() {
 		return codigo;
 	}
 
 
-	public void setCodigo(long codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
+
+
 
 
 	public String getNome() {

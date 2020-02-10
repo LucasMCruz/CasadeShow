@@ -23,7 +23,8 @@
 </head>
 <section layout:fragment="conteudo">
 
-	
+	<form class="m-8" method="POST" action="#" th:action="@{/eventos}"
+		th:object="${evento}">
 		<div class="card container-fluid p-0 m-3 col-sm-8">
 		  <div class="card-header">
 		    Criar Evento
@@ -31,39 +32,82 @@
 			<div class="card-body m-4">
 				<div class="form-group row">
 					<label for="inputDescricao"
-						class="text-left  col-sm-2 col-form-label tamanholabel">Descrição:</label>
+						class="text-left  col-sm-2 col-form-label tamanholabel">Evento:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control " id="inputDescricao" name="descricao"
+						<input type="text" class="form-control " id="Evento" name="descricao"
 							placeholder="ex: Nome.">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="inputValor"
-						class="text-left  col-sm-2 col-form-label tamanholabel">Valor do ingresso:</label>
+						class="text-left  col-sm-2 col-form-label tamanholabel">Capacidade:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control " id="inputValor" name="valor">
+						<input type="text" class="form-control " id="Capacidade" name="capacidade">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="inputValor"
 						class="col-sm-2 col-form-label tamanholabel">Data do show:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control " id="inputDescricao" name="dataShow"
+						<input type="text" class="form-control " id="dataEvento" name="dataEvento"
 							placeholder="dd/mm/yyyy">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-2 col-from-lobel tamanholabel" for="exampleFormControlSelect1">Select:</label>
-					    <select class="form-control col-sm-4" id="exampleFormControlSelect1">
-					      <option>Reservado</option>
-					      <option>Comprado</option>
-					    </select>
-					 
+					<label for="inputValor"
+						class="col-sm-2 col-form-label tamanholabel">Valor do Ingresso:</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control " id="valor" name="valor"
+							>
+					</div>
 				</div>
 				<input class="btn btn-primary col-off-set-3" type="submit" value="Submit">	
 			</div>
 		</div>
-				
+	</form>
+	<div class="container-fluid card">
+		<div class="card-body form-group row">
+			<table class="table table-bordered table-striped container-fluid">
+				<thead>
+					<tr>
+						<th class="text-center">Id</th>
+						<th>Nome</th>
+						<th class="text-center">Capacidade</th>
+
+						<th class="text-center">Preço do Ingresso</th>
+						<th class="text-center">Casa de Show</th>
+						<th class="text-center">Editar</th>
+						<th class="text-center">Excluir</th>
+					<tr>
+				</thead>
+				<tbody>
+					<tr th:each="cshow:${events}">
+						<td class="text-center" th:text="${cshow.codigo}"></td>
+						<td th:text="${cshow.nome}"></td>
+						<td class="text-center" th:text="${cshow.capacidade}"></td>
+						<td class="text-center" th:text="${cshow.valor}"></td>
+						<td class="text-center"><a class="btn btn-link btn-sm"
+							th:href="@{/casas/{codigo}(codigo=${cshow.codigo})} "
+							title="Editar"> <i class="fas fa-pencil-alt"></i>
+						</a>
+						</td>
+						<td class="text-center">
+						<a class="btn btn-link btn-sm"
+							data-toggle="modal" data-target="#exampleModal" th:attr="data-codigo=${cshow.codigo}" title="deletar">
+								<i class="fas fa-times"></i>
+						</a>
+						</td>
+					</tr>
+
+
+
+				</tbody>
+
+
+			</table>
+		</div>
+		<div layout:insert="btnExcluir"></div>
+		</div>	
 	
 </section>
 

@@ -1,10 +1,12 @@
 package com.gft.show.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.gft.show.model.CasaShow;
 import com.gft.show.repository.CasaShowRepository;
 
-;
+
 
 @Controller
 public class CasaShowController {
@@ -26,37 +28,62 @@ public class CasaShowController {
 	
 	
 	@RequestMapping(value="/casas")
-	public ModelAndView view() {
-		List<CasaShow> todasCasas = cshow.findAll();
+	public ModelAndView casas() {
 		ModelAndView mv = new ModelAndView("CadastroCasa");
-		mv.addObject("cshow", todasCasas);
 		mv.addObject(new CasaShow());
+		List<CasaShow> todasCasas = cshow.findAll();
+		mv.addObject("cshow", todasCasas);
+		
+		
 		
 		return mv;
 	}
 	
 	
 	@RequestMapping(value="/casas", method = RequestMethod.POST)
-	public ModelAndView salvar(CasaShow casashow) {
-		List<CasaShow> todasCasas = cshow.findAll();
+	public ModelAndView salvar(@Validated CasaShow casas, Errors errors) {
 		ModelAndView mv = new ModelAndView("CadastroCasa");
-		mv.addObject("cshow", todasCasas);
-		mv.addObject(new CasaShow());
+		
+		if(errors.hasErrors()) {
+			List<CasaShow> todasCasas = cshow.findAll();
+			mv.addObject("cshow", todasCasas);
+			return mv;
+		}
+		
+		cshow.save(casas);
 		
 		mv.addObject("mensagem", "Casa Cadastrada com sucesso");
+		mv.addObject(new CasaShow());
+		List<CasaShow> todasCasas = cshow.findAll();
+		mv.addObject("cshow", todasCasas);
 		
-		cshow.save(casashow);
+	
 
 		//Salvar no banco de dados
 		
-		return view();
+		return mv;
 	}
 	
+	@RequestMapping(value="/casas/{codigo}", method = RequestMethod.POST)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes) {
+		
+	
+		cshow.deleteById(codigo);
+
+		
+		
+		return "redirect:/casas";
+	}
+	
+	
+	
+	
 	@RequestMapping(value="/casas/{codigo}")
-	public ModelAndView edicao(@PathVariable ("codigo")Long codigo, RedirectAttributes red) {
-		CasaShow casashow = cshow.findById(codigo).get();
+	public ModelAndView edicao(@PathVariable ("codigo") CasaShow cshow) {
+		
 		ModelAndView mv = new ModelAndView("CadastroCasa");
-		mv.addObject(casashow);
+		
+		mv.addObject(cshow);
 		
 		
 		return mv;
