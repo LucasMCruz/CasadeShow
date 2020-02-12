@@ -3,10 +3,10 @@ package com.gft.show.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ResourceProperties.Content;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,8 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gft.show.model.CasaShow;
 import com.gft.show.repository.CasaShowRepository;
-
-
 
 @Controller
 public class CasaShowController {
@@ -88,6 +86,9 @@ public class CasaShowController {
 		
 		return mv;
 	}
+
+
+	
 	
 	
 	

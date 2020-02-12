@@ -16,8 +16,8 @@
 
 
 <section layout:fragment="conteudo">
-	<form class="m-8" method="POST" action="#" th:action="@{/casas}"
-		th:object="${casas}">
+	<form class="m-8" method="POST" action="/casas"
+		th:object="${casaShow}">
 
 		<div class="logo text-center">
 			<h2>Casa de Show</h2>
@@ -30,21 +30,22 @@
 
 
 		<div class="form-group row m-5">
+			<input type="hidden" th:field="*{codigo}"/>
 
 			<label for="inputDescricao"
-				class="text-leftcol-form-label col-sm-1 tamanholabel">Casa
+				class="text-leftcol-form-label col-sm-1 tamanholabel ">Casa
 				de Show:</label>
-			<div class="col-sm-2">
-				<input type="text" class="form-control" id="nome" name="nome"
-					placeholder="Nome">
+			<div class="col-sm-2 was-valid">
+				<input type="text" class="form-control" id="nome" th:field="*{nome}"
+					placeholder="Nome"required>
 			</div>
 		</div>
 
 		<div class="form-group row m-5">
 			<label for="inputValor" class="col-sm-1 col-form-label tamanholabel">Endereço:</label>
-			<div class="col-sm-2">
-				<input type="text" class="form-control" id="edereco" name="endereco"
-					placeholder="Av. Rua. Alameda...">
+			<div class="col-sm-2 was-valid">
+				<input type="text" class="form-control" id="edereco" th:field="*{endereco}"
+					placeholder="Av. Rua. Alameda..." required>
 			</div>
 		</div>
 		<div class="form-group row ml-5">

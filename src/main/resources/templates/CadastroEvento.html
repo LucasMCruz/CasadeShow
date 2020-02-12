@@ -23,18 +23,20 @@
 </head>
 <section layout:fragment="conteudo">
 
-	<form class="m-8" method="POST" action="#" th:action="@{/eventos}"
+	<form class="m-8" method="POST" action="/eventos"
 		th:object="${evento}">
 		<div class="card container-fluid p-0 m-3 col-sm-8">
 		  <div class="card-header">
 		    Criar Evento
 		  </div>
 			<div class="card-body m-4">
+			<input type="hidden" th:field="*{codigo}"/>
 				<div class="form-group row">
+				
 					<label for="inputDescricao"
 						class="text-left  col-sm-2 col-form-label tamanholabel">Evento:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control " id="Evento" name="descricao"
+						<input type="text" class="form-control " id="Evento" th:field="*{nomeEvento}"
 							placeholder="ex: Nome.">
 					</div>
 				</div>
@@ -42,14 +44,14 @@
 					<label for="inputValor"
 						class="text-left  col-sm-2 col-form-label tamanholabel">Capacidade:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control " id="Capacidade" name="capacidade">
+						<input type="text" class="form-control " id="Capacidade" th:field="*{capacidade}">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="inputValor"
 						class="col-sm-2 col-form-label tamanholabel">Data do show:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control " id="dataEvento" name="dataEvento"
+						<input type="text" class="form-control " id="dataEvento" th:field="*{dataEvento}"
 							placeholder="dd/mm/yyyy">
 					</div>
 				</div>
@@ -57,9 +59,25 @@
 					<label for="inputValor"
 						class="col-sm-2 col-form-label tamanholabel">Valor do Ingresso:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control " id="valor" name="valor"
+						<input type="text" class="form-control " id="valor" th:field="*{valor}"
 							>
 					</div>
+				</div>
+				<div class="form- row" >
+					<label for="inputState" class="text-center col-sm-2 col-form-label">Casa de Show:
+					</label> <select id="inputState" class="form-control col-sm-2" th:field="*{casaShow}">
+						
+						<option th:each="casaShow : ${cshow}" th:value="${casaShow.nome}" th:text="${casaShow.nome}"></option>
+						
+					</select>
+				</div>
+				<div class="form- row" >
+					<label for="inputState" class="text-center col-sm-2 col-form-label">Tipo:
+					</label> <select id="inputState" class="form-control col-sm-2" th:field="*{status}">
+						
+						<option th:each="status : ${todosStatusEvento}" th:value="${status}" th:text="${status.definicao}" th:field="*{status}"></option>
+						
+					</select>
 				</div>
 				<input class="btn btn-primary col-off-set-3" type="submit" value="Submit">	
 			</div>
@@ -71,9 +89,8 @@
 				<thead>
 					<tr>
 						<th class="text-center">Id</th>
-						<th>Nome</th>
+						<th class="text-center">Nome</th>
 						<th class="text-center">Capacidade</th>
-
 						<th class="text-center">Preço do Ingresso</th>
 						<th class="text-center">Casa de Show</th>
 						<th class="text-center">Editar</th>
@@ -81,22 +98,22 @@
 					<tr>
 				</thead>
 				<tbody>
-					<tr th:each="cshow:${events}">
-						<td class="text-center" th:text="${cshow.codigo}"></td>
-						<td th:text="${cshow.nome}"></td>
-						<td class="text-center" th:text="${cshow.capacidade}"></td>
-						<td class="text-center" th:text="${cshow.valor}"></td>
-						<td class="text-center"><a class="btn btn-link btn-sm"
-							th:href="@{/casas/{codigo}(codigo=${cshow.codigo})} "
+					<tr th:each="events:${events}">
+							<td class="text-center" th:text="${events.codigo}"></td>
+							<td class="text-center" th:text="${events.nomeEvento}"></td>
+							<td class="text-center" th:text="${events.capacidade}"></td>
+							<td class="text-center" th:text="${events.valor}"></td>
+							<td class="text-center" th:text="${events.casaShow}" >aa</td>
+							<td class="text-center"><a class="btn btn-link btn-sm"
+							th:href="@{/eventos/{codigo}(codigo=${events.codigo})} "
 							title="Editar"> <i class="fas fa-pencil-alt"></i>
 						</a>
-						</td>
-						<td class="text-center">
-						<a class="btn btn-link btn-sm"
-							data-toggle="modal" data-target="#exampleModal" th:attr="data-codigo=${cshow.codigo}" title="deletar">
-								<i class="fas fa-times"></i>
-						</a>
-						</td>
+							</td>
+							<td class="text-center"><a class="btn btn-link btn-sm"
+								data-toggle="modal" data-target="#exampleModal2" th:attr="data-codigo=${events.codigo}" title="deletar">
+									<i class="fas fa-times"></i>
+							</a>
+							</td>
 					</tr>
 
 
@@ -106,7 +123,7 @@
 
 			</table>
 		</div>
-		<div layout:insert="btnExcluir"></div>
+		<div layout:insert="btnExcluir2"></div>
 		</div>	
 	
 </section>
