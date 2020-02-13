@@ -9,7 +9,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<link href="../fontawesome-free-5.12.0-web/css/all.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" href="../fontawesome-free-5.12.0-web/css/all.css"
+	type="text/css">
 
 </head>
 
@@ -19,32 +21,30 @@
 		<div class="logo text-center card-header ">
 			<h2>Bem-vindo user</h2>
 		</div>
-		<div class="card m-5 pt-2 pb-2 pl-4">
-			<div class="card-body" th:each="events:${events}">
-
-
-				<h5 class="text-center" th:text="${events.nomeEvento}"></h5>
-				<h5 class="text-center" th:text="${events.capacidade}"></h5>
-				<h5 class="text-center" th:text="${events.valor}"></h5>
-
-
-
-				<button class="btn btn-primary" type="submit">Comprar</button>
-
+			<div class="card m-5 pt-2 pb-2 pl-2 pr-2"  th:each="events: ${events}">
+			
+			<div class="span12">
+			
+					<i class="fas fa-drum fa-7x col-sm-5" style="float:left"	></i>
+					<i class="fas fa-drum fa-7x col-sm-5" style="float:right"	></i>
+					
+				<h5 th:text="${events.nomeEvento}"></h5>
+				<h6 th:text="|Preço do ingresso: R$ ${{events.valor}}|"></h6>
+				<h6 th:text="|Local Do Evento: ${events.casaShow.nome}|"></h6>
+				<h6 th:text="|Capacidade Maxima: ${events.capacidade} |"></h6>
+			
 			</div>
-			<!-- end slider -->
-		</div>
-
-		<div class="card m-5 pt-2 pb-2 pl-4">
-			<div class="card-body form-group row">
+			</div>
+			</div>
+			<div class="card m-5 pt-2 pb-2 pl-4">
+			<div class="card-body form-group row" >
 				<i class="fas fa-drum fa-10x col-sm-5"></i>
-				<div class="from-group row col-sm-5">
+				<div class="from-group row col-sm-5"th:each="events: ${events}">
 					<div class="span12">
 						<div class="text-center">
 
 							<p>
-								<strong>Show de Samba</strong> <br> Preço do Ingresso R$
-								200,00 <br> Data: 20/02/2020<br> Local: Allianz Arena<br>
+								<strong th:text="${events.nomeEvento}"> Show de Samba</strong> <p th:text="|Preço do ingresso: R$ ${{events.valor}}|"><p th:text="|Local Do Evento: ${events.casaShow.nome}|"><p th:text="|Data do vento: ${{events.dataEvento}}|"> <p>
 								Ingressos Restantes:
 							</p>
 							<form>
@@ -57,14 +57,11 @@
 			</div>
 			<!-- spacer section -->
 		</div>
+	
 
-
-	</div>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/btn.js"></script>
-
-
 </section>
 </html>

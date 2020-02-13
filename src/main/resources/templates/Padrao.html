@@ -32,7 +32,7 @@
 	  	<div class="collapse navbar-collapse pull-right" id="navbarNav">
 	  		<div class="col-sm-8"></div>
 				<ul id="menu-main" class="navbar-nav ">
-					<li sec:authorize ="hasRole('PG_HOME')" class="nav-item active"><a class="nav-link" title="about" href="/home" >Home</a>
+					<li class="nav-item active"><a class="nav-link" title="about" href="/" >Home</a>
 					<li class="nav-item active" sec:authorize ="hasRole('PG_CASAS')"><a class="nav-link" title="Casas" href="/casas">Casas de shows</a></li>
 					<li class="nav-item active" sec:authorize ="hasRole('PG_EVENTO')"><a  class="nav-link" title="Eventos" href="/eventos">Eventos</a></li>
 					<li class="nav-item active" sec:authorize="hasRole('PG_HISTORICO')"><a  class="nav-link" title="Historico" href="/historico">Historico</a></li>

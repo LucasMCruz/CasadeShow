@@ -1,5 +1,8 @@
 package com.gft.show.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +20,22 @@ public class CasaShow {
 	
 	private String nome;
 	
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "casaShow", orphanRemoval = true)
+	private List<Evento> evento;
 	
+	
+	
+	public List<Evento> getEvento() {
+		return evento;
+	}
+
+
+	public void setEvento(List<Evento> evento) {
+		this.evento = evento;
+	}
+
+
 	private String endereco;
 
 	public Long getCodigo() {

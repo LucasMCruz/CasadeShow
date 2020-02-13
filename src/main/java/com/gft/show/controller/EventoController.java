@@ -100,7 +100,7 @@ public class EventoController {
 	public List<StatusEvento> todosStatusTitulo(){
 		return Arrays.asList(StatusEvento.values());
 	}
-	
+
 	
 
 

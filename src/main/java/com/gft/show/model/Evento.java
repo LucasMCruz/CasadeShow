@@ -10,6 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 
@@ -20,16 +25,29 @@ public class Evento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
+	
 	private String nomeEvento;
-	private BigDecimal capacidade;
+	
+	
+	private int capacidade;
+	
+	@NotNull(message = "Data de fabricação obrigatoria")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
 	private Date dataEvento;
+	
+	
 	private BigDecimal valor;
 	
 	@Enumerated(EnumType.STRING)
 	private StatusEvento status;
 	
+	@ManyToOne
+	@NotNull(message = "Selecione ou crie uma Casa de Show")
+	private CasaShow casaShow;
 	
-	private String casaShow;
+	
+	/*private String casaShow;
 	
 	
 	public String getCasaShow() {
@@ -37,6 +55,14 @@ public class Evento {
 	}
 
 	public void setCasaShow(String casaShow) {
+		this.casaShow = casaShow;
+	}*/
+
+	public CasaShow getCasaShow() {
+		return casaShow;
+	}
+
+	public void setCasaShow(CasaShow casaShow) {
 		this.casaShow = casaShow;
 	}
 
@@ -58,11 +84,11 @@ public class Evento {
 		this.nomeEvento = nomeEvento;
 	}
 
-	public BigDecimal getCapacidade() {
+	public int getCapacidade() {
 		return capacidade;
 	}
 
-	public void setCapacidade(BigDecimal capacidade) {
+	public void setCapacidade(int capacidade) {
 		this.capacidade = capacidade;
 	}
 		public BigDecimal getValor() {

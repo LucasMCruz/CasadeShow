@@ -4,9 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gft.show.model.CasaShow;
@@ -23,18 +21,17 @@ public class HomeController {
 	@Autowired
 	private CasaShowRepository cshow;
 	
-	@RequestMapping("/home")
+	@RequestMapping(value="/")
 	public ModelAndView casas() {
 		ModelAndView mv = new ModelAndView("Home");
 		List<Evento> todosEventos = events.findAll();
-		mv.addObject("evento", todosEventos);
+		mv.addObject("events", todosEventos);
 		List<CasaShow> todasCasas = cshow.findAll();
-		mv.addObject("casashow", todasCasas);
+		mv.addObject("cshow", todasCasas);
 		
 		
 		return mv;
 	}
-	
 	
 
 }
