@@ -21,42 +21,25 @@
 		<div class="logo text-center card-header ">
 			<h2>Bem-vindo user</h2>
 		</div>
-			<div class="card m-5 pt-2 pb-2 pl-2 pr-2"  th:each="events: ${events}">
+			<div class="card m-5 pt-2 pb-2 pl-2 pr-2 "   th:each="events: ${events}">
 			
 			<div class="span12">
 			
-					<i class="fas fa-drum fa-7x col-sm-5" style="float:left"	></i>
-					<i class="fas fa-drum fa-7x col-sm-5" style="float:right"	></i>
+					<i class="fas fa-ticket-alt fa-7x col-sm-5" style="float:left"	></i>
+					<i class="fas fa-ticket-alt fa-7x col-sm-2" style="float:right"	></i>
 					
 				<h5 th:text="${events.nomeEvento}"></h5>
 				<h6 th:text="|Preço do ingresso: R$ ${{events.valor}}|"></h6>
 				<h6 th:text="|Local Do Evento: ${events.casaShow.nome}|"></h6>
 				<h6 th:text="|Capacidade Maxima: ${events.capacidade} |"></h6>
+				<h6 th:text="|Ingressos a Venda: ${events.qtdingresso} |"></h6>
+				
+								<a class="btn btn-link btn-dark col-sm-12" th:href="@{/{codigo}(codigo=${events.codigo})}"  type="submit">Comprar</a>
+				
+			</div>
+			</div>
+			</div>
 			
-			</div>
-			</div>
-			</div>
-			<div class="card m-5 pt-2 pb-2 pl-4">
-			<div class="card-body form-group row" >
-				<i class="fas fa-drum fa-10x col-sm-5"></i>
-				<div class="from-group row col-sm-5"th:each="events: ${events}">
-					<div class="span12">
-						<div class="text-center">
-
-							<p>
-								<strong th:text="${events.nomeEvento}"> Show de Samba</strong> <p th:text="|Preço do ingresso: R$ ${{events.valor}}|"><p th:text="|Local Do Evento: ${events.casaShow.nome}|"><p th:text="|Data do vento: ${{events.dataEvento}}|"> <p>
-								Ingressos Restantes:
-							</p>
-							<form>
-								<button class="btn btn-primary" type="submit">Comprar</button>
-							</form>
-						</div>
-						<!-- end slider -->
-					</div>
-				</div>
-			</div>
-			<!-- spacer section -->
-		</div>
 	
 
 

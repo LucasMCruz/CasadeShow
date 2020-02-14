@@ -26,7 +26,8 @@ public class MyUserDetailsService implements UserDetailsService {
 		
 		User user = repo.findByUsername(username);
 		if(user==null)
-			throw new UsernameNotFoundException("User 404");
+			throw new UsernameNotFoundException("Usuario nao encontrado");
+		
 		
 		
 		

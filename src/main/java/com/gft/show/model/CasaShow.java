@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class CasaShow {
@@ -17,7 +20,8 @@ public class CasaShow {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	
+	@NotEmpty(message = "Descrição é obrigatoria")
+	@Size(max = 60, message = "A descrição nao pode conter mais de 60 caracteres")
 	private String nome;
 	
 
@@ -35,7 +39,8 @@ public class CasaShow {
 		this.evento = evento;
 	}
 
-
+	@NotEmpty(message = "Descrição é obrigatoria")
+	@Size(max = 60, message = "A descrição nao pode conter mais de 60 caracteres")
 	private String endereco;
 
 	public Long getCodigo() {

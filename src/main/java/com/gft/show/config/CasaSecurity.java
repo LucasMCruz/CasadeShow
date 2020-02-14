@@ -2,6 +2,7 @@ package com.gft.show.config;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -72,6 +73,17 @@ public class CasaSecurity extends WebSecurityConfigurerAdapter {
 			.and()
 			.withUser("flavio").password("{noop}123").roles("PG_HISTORICO").roles("PG_VENDA");
 	}
+/*	@Autowired
+	public void createuser(AuthenticationManagerBuilder builder) throws Exception{
+		Scanner sc = new Scanner(System.in);
+		String ario = (sc.nextLine());
+		String orde = ("{noop}" + sc.nextLine());
+		builder
+		
+			.inMemoryAuthentication()
+			.withUser(ario).password(orde).roles("PG_EVENTO", "PG_HISTORICO", "PG_CASAS", "PG_VENDA");
+			
+	}*/
 	/*@Bean
 	@Override
 	 protected UserDetailsService userDetailsService() {

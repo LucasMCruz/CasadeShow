@@ -12,9 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 
 
@@ -26,9 +31,12 @@ public class Evento {
 	private Long codigo;
 	
 	
+	@NotEmpty(message = "Evento é obrigatoria")
+	@Size(max = 60, message = "A descrição nao pode conter mais de 60 caracteres")
 	private String nomeEvento;
 	
-	
+	@NotNull(message = "Capacidade não pode ser nulo")
+	@DecimalMin(value = "1.00", message = "Capacidade tem que ser maior que 0" )
 	private int capacidade;
 	
 	@NotNull(message = "Data de fabricação obrigatoria")
@@ -36,7 +44,9 @@ public class Evento {
 	@Temporal(TemporalType.DATE)
 	private Date dataEvento;
 	
-	
+	@NotNull(message = "Valor de venda não pode ser nulo")
+	@DecimalMin(value = "0.01", message = "Valor nao pode ser menor que 0,01" )
+	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal valor;
 	
 	@Enumerated(EnumType.STRING)
@@ -46,7 +56,8 @@ public class Evento {
 	@NotNull(message = "Selecione ou crie uma Casa de Show")
 	private CasaShow casaShow;
 	
-	
+	private int qtdingresso = capacidade;
+	private int descontar = qtdingresso;
 	/*private String casaShow;
 	
 	
@@ -138,6 +149,22 @@ public class Evento {
 		} else if (!codigo.equals(other.codigo))
 			return false;
 		return true;
+	}
+
+	public int getQtdingresso() {
+		return qtdingresso;
+	}
+
+	public void setQtdingresso(int qtdingresso) {
+		this.qtdingresso = qtdingresso;
+	}
+
+	public int getDescontar() {
+		return descontar;
+	}
+
+	public void setDescontar(int descontar) {
+		this.descontar = descontar;
 	}
 
 	

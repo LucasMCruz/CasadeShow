@@ -25,10 +25,19 @@
 
 	<form class="m-8" method="POST" action="/eventos"
 		th:object="${evento}">
-		<div class="card container-fluid p-0 m-3 col-sm-8">
+		<div class="alert alert-success mr-3 ml-3" role="alert"
+				th:if="${!#strings.isEmpty(mensagem)}">
+				<span th:text="${mensagem}">Casa de show cadastrada</span>
+			</div>
+			<div class="alert alert-danger mr-3 ml-3 mt-3" th:if="${#fields.hasAnyErrors()}">
+				<div th:each="detailedError : ${#fields.detailedErrors()}">
+				<span th:text="${detailedError.message}"></span></div></div>
+		<div class="card fluid  p-0 m-3 col-sm-8">
+			
 		  <div class="card-header">
 		    Criar Evento
 		  </div>
+		  
 			<div class="card-body m-4">
 			<input type="hidden" th:field="*{codigo}"/>
 				<div class="form-group row">
@@ -36,8 +45,8 @@
 					<label for="inputDescricao"
 						class="text-left  col-sm-2 col-form-label tamanholabel">Evento:</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control was-validated" id="Evento" th:field="*{nomeEvento}" required
-							placeholder="ex: Nome.">
+						<input type="text" class="form-control was-validated" id="Evento" th:field="*{nomeEvento}" 
+							placeholder="ex: Nome." required>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -104,7 +113,8 @@
 							<td class="text-center" th:text="${events.capacidade}"></td>
 							<td class="text-center" th:text="${events.valor}"></td>
 							<td class="text-center" th:text="${events.casaShow.nome}" ></td>
-							<td class="text-center"><a class="btn btn-link btn-sm"
+							<td class="text-center">
+							<a class="btn btn-link btn-sm"
 							th:href="@{/eventos/{codigo}(codigo=${events.codigo})} "
 							title="Editar"> <i class="fas fa-pencil-alt"></i>
 						</a>

@@ -18,15 +18,18 @@
 <section layout:fragment="conteudo">
 	<form class="m-8" method="POST" action="/casas"
 		th:object="${casaShow}">
-
-		<div class="logo text-center">
-			<h2>Casa de Show</h2>
-		</div>
-
 		<div class="alert alert-success mr-3 ml-3" role="alert"
 			th:if="${!#strings.isEmpty(mensagem)}">
 			<span th:text="${mensagem}">Casa de show cadastrada</span>
 		</div>
+		<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+				<div th:each="detailedError : ${#fields.detailedErrors()}">
+				<span th:text="${detailedError.message}"></span></div></div>
+		<div class="logo text-center">
+			<h2>Casa de Show</h2>
+		</div>
+
+		
 
 
 		<div class="form-group row m-5">
@@ -37,7 +40,7 @@
 				de Show:</label>
 			<div class="col-sm-2 was-valid">
 				<input type="text" class="form-control" id="nome" th:field="*{nome}"
-					placeholder="Nome"required>
+					placeholder="Nome">
 			</div>
 		</div>
 

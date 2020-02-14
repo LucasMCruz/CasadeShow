@@ -1,11 +1,11 @@
 package com.gft.show.controller;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,10 +48,18 @@ public class EventoController {
 	
 	
 	@RequestMapping(value="/eventos", method = RequestMethod.POST)
-	public ModelAndView salvar(@Validated Evento evento) {
+	public ModelAndView salvar(@Validated Evento evento, Errors errors) {
 		ModelAndView mv = new ModelAndView("CadastroEvento");
 		
-		
+		if(errors.hasErrors()) {
+			List<Evento> todosEventos = events.findAll();
+			mv.addObject("events", todosEventos);
+			List<CasaShow> todasCasas = cshow.findAll();
+			mv.addObject("cshow", todasCasas);
+			return mv;
+		}
+		evento.setQtdingresso(evento.getCapacidade());
+		evento.setDescontar(evento.getQtdingresso() - 1);
 		events.save(evento);
 		
 		mv.addObject("mensagem", "Evento Cadastrada com sucesso");
