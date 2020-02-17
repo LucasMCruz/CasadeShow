@@ -7,6 +7,7 @@ import java.util.jar.Attributes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,26 +39,34 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping("/{codigo}")
-	public String comprar(@PathVariable Long codigo, RedirectAttributes attributess) {
+	@RequestMapping("/venda/{codigo}")
+	public ModelAndView comprar(@PathVariable Long codigo, RedirectAttributes attributess) {
 			System.out.println(codigo);	
-			ModelAndView mv = new ModelAndView("Home");
+			ModelAndView mv = new ModelAndView("redirect:/");
+		
+			int des = 1;
 			
-			Optional<Evento> todosEventos = events.findById(codigo);
-			int des = 1 ;
-			if (todosEventos.get().getQtdingresso() > 0) {
-					todosEventos.get().setQtdingresso(todosEventos.get().getQtdingresso() - des);
-			mv.addObject(todosEventos.get().getQtdingresso());
-			events.save(todosEventos.get());}
+			Optional<Evento> Evento = events.findById(codigo);
+			if (Evento.get().getQtdingresso() > 0) {
+					Evento.get().setQtdingresso(Evento.get().getQtdingresso() - des);
+			mv.addObject(Evento.get().getQtdingresso());
+			events.save(Evento.get());}
 			else {
-				attributess.addFlashAttribute("Otario acabou");
+				attributess.addFlashAttribute("mensagem", "acabou");
 			}
-			
-			//events.save(todosEventos.get());
-			System.out.println(todosEventos.get().getQtdingresso());
-			return "redirect:/";
+			mv.addObject("events", Evento.get());
+			events.save(Evento.get());
+			System.out.println(Evento.get().getNomeEvento());
+			return mv;
 		
 	}
-	
+	@RequestMapping("/{codigo}")
+	public ModelAndView venda(@PathVariable Long codigo) {
+		ModelAndView mv = new ModelAndView("TelaVenda");
+		mv.addObject(new Evento());
+		Optional<Evento> Evento = events.findById(codigo);
+		mv.addObject("events", Evento.get());
+		return mv;
+	}
 
 }

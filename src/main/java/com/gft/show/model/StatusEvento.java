@@ -3,7 +3,7 @@ package com.gft.show.model;
 public enum StatusEvento {
 	ROCK("Rock"),
 	AXE("Axe"),
-	ELETROCIA("Eletrocia");
+	ELETRONIA("Eletrocia");
 	
 	private String definicao;
 

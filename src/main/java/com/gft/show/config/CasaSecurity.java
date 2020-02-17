@@ -44,9 +44,9 @@ public class CasaSecurity extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 			.antMatchers("/home").permitAll()
 			.antMatchers("/casas").hasAnyRole("PG_CASAS")
-			.antMatchers("/venda").hasAnyRole("PG_VENDA")
+			.antMatchers("/{codigo}").hasAnyRole("PG_VENDA")
 			.antMatchers("/evento").hasAnyRole("PG_EVENTOS")
-			.antMatchers("/historico").hasAnyRole("PG_HISTORICO")
+			.antMatchers("/historico").permitAll()
 			.antMatchers("/entrar").permitAll()
 			.antMatchers("/registrar").permitAll()
 				.anyRequest().authenticated()
@@ -71,7 +71,7 @@ public class CasaSecurity extends WebSecurityConfigurerAdapter {
 			.inMemoryAuthentication()
 			.withUser("carlos").password("{noop}123").roles("PG_EVENTO", "PG_HISTORICO", "PG_CASAS", "PG_VENDA")
 			.and()
-			.withUser("flavio").password("{noop}123").roles("PG_HISTORICO").roles("PG_VENDA");
+			.withUser("flavio").password("{noop}123").roles("PG_HISTORICO","PG_VENDA");
 	}
 /*	@Autowired
 	public void createuser(AuthenticationManagerBuilder builder) throws Exception{

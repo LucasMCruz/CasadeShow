@@ -3,7 +3,7 @@
 	xmlns="http://w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:sec="http://www.thymeleaf-extras-springsecurity4"
+	xmlns:sec="http://www.thymeleaf-extras-springsecurity5"
 	>
 
 <head>
@@ -35,7 +35,7 @@
 					<li class="nav-item active"><a class="nav-link" title="about" href="/" >Home</a>
 					<li class="nav-item active" sec:authorize ="hasRole('PG_CASAS')"><a class="nav-link" title="Casas" href="/casas">Casas de shows</a></li>
 					<li class="nav-item active" sec:authorize ="hasRole('PG_EVENTO')"><a  class="nav-link" title="Eventos" href="/eventos">Eventos</a></li>
-					<li class="nav-item active" sec:authorize="hasRole('PG_HISTORICO')"><a  class="nav-link" title="Historico" href="/historico">Historico</a></li>
+					<li class="nav-item active"><a  class="nav-link" title="Historico" href="/historico">Historico</a></li>
 					<li class="nav-item active"><a  class="nav-link" title="Sair" href="/logout">LogOut</a></li>
 				</ul>
 			 

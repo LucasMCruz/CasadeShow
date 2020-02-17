@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:sec="http://www.thymeleaf-extras-springsecurity4"
+	xmlns:sec="http://www.thymeleaf-extras-springsecurity5"
 	layout:decorate="Padrao">
 
 <head>
@@ -18,6 +18,14 @@
 <section layout:fragment="conteudo">
 
 	<div class="container-fluid" th:object="${evento}">
+		<div class="alert alert-success mr-3 ml-3" role="alert"
+				th:if="${!#strings.isEmpty(mensagem)}">
+				<span th:text="${mensagem}">Compra realizada com sucesso</span>
+			</div>
+					<div class="alert alert-danger mr-3 ml-3" role="alert"
+				th:if="${!#strings.isEmpty(mensagem)}">
+				<span th:text="${mensagem}">Compra realizada com sucesso</span>
+			</div>
 		<div class="logo text-center card-header ">
 			<h2>Bem-vindo user</h2>
 		</div>
@@ -33,8 +41,9 @@
 				<h6 th:text="|Local Do Evento: ${events.casaShow.nome}|"></h6>
 				<h6 th:text="|Capacidade Maxima: ${events.capacidade} |"></h6>
 				<h6 th:text="|Ingressos a Venda: ${events.qtdingresso} |"></h6>
-				
-								<a class="btn btn-link btn-dark col-sm-12" th:href="@{/{codigo}(codigo=${events.codigo})}"  type="submit">Comprar</a>
+
+								<a class="btn btn-link btn-dark col-sm-12" th:href="@{/{codigo}(codigo=${events.codigo})}"  type="button">Comprar</a>
+								
 				
 			</div>
 			</div>

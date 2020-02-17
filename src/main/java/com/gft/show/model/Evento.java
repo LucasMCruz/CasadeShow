@@ -57,7 +57,7 @@ public class Evento {
 	private CasaShow casaShow;
 	
 	private int qtdingresso = capacidade;
-	private int descontar = qtdingresso;
+
 	/*private String casaShow;
 	
 	
@@ -159,13 +159,7 @@ public class Evento {
 		this.qtdingresso = qtdingresso;
 	}
 
-	public int getDescontar() {
-		return descontar;
-	}
-
-	public void setDescontar(int descontar) {
-		this.descontar = descontar;
-	}
+	
 
 	
 	

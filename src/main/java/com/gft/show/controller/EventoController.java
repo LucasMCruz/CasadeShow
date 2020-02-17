@@ -59,7 +59,7 @@ public class EventoController {
 			return mv;
 		}
 		evento.setQtdingresso(evento.getCapacidade());
-		evento.setDescontar(evento.getQtdingresso() - 1);
+		
 		events.save(evento);
 		
 		mv.addObject("mensagem", "Evento Cadastrada com sucesso");
