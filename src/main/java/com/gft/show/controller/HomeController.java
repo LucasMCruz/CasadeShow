@@ -39,16 +39,15 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping("/venda/{codigo}")
-	public ModelAndView comprar(@PathVariable Long codigo, RedirectAttributes attributess) {
+	@RequestMapping(value="/{codigo}", method = RequestMethod.POST)
+	public ModelAndView comprar(@PathVariable Long codigo, RedirectAttributes attributess, int desc) {
 			System.out.println(codigo);	
 			ModelAndView mv = new ModelAndView("redirect:/");
 		
-			int des = 1;
 			
 			Optional<Evento> Evento = events.findById(codigo);
 			if (Evento.get().getQtdingresso() > 0) {
-					Evento.get().setQtdingresso(Evento.get().getQtdingresso() - des);
+					Evento.get().setQtdingresso(Evento.get().getQtdingresso() - desc);
 			mv.addObject(Evento.get().getQtdingresso());
 			events.save(Evento.get());}
 			else {
@@ -60,7 +59,7 @@ public class HomeController {
 			return mv;
 		
 	}
-	@RequestMapping("/{codigo}")
+	@RequestMapping(value="/{codigo}", method = RequestMethod.GET)
 	public ModelAndView venda(@PathVariable Long codigo) {
 		ModelAndView mv = new ModelAndView("TelaVenda");
 		mv.addObject(new Evento());

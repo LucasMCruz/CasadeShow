@@ -6,5 +6,6 @@ import com.gft.show.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 	User findByUsername(String username);
+	//CrudRepository<User, Long>
 
 }

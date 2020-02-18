@@ -25,7 +25,7 @@ public class CasaShow {
 	private String nome;
 	
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "casaShow", orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "casaShow")
 	private List<Evento> evento;
 	
 	

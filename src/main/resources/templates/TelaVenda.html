@@ -15,6 +15,7 @@
 
 </head>
 <section layout:fragment="conteudo">
+<form method="POST">
 	<div class="card mb-3 ml-3 mr-3" th:object="${evento}">
 		<div class="alert alert-success mr-3 ml-3" role="alert"
 				th:if="${!#strings.isEmpty(mensagem)}">
@@ -48,14 +49,15 @@
  <hr>
     <p class="card-text col-sm-2" th:text="|Ingressos a Venda: ${events.qtdingresso} |"><small class="text-muted"></small></p>
     <div class="col-sm-4" >
-    <input name=>Quantidade de Ingresso</div>
+    <input name="desc">Quantidade de Ingresso</div>
     
-      <a type="button" class="btn btn-primary col-sm-1 btn-sm " th:href="@{/venda/{codigo}(codigo=${events.codigo})}">comprar</a>
+      <button type="submit" class="btn btn-primary col-sm-1 btn-sm " th:href="@{/{codigo}(codigo=${events.codigo})}">comprar</button>
       <div class="col-sm-1" ></div>
       <a type="button" class="btn btn-danger col-sm-1 btn-sm" href="/">cancelar</a>
     
   
   </div>
   </div>
+  </form>
 </section>
 </html>

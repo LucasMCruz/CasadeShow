@@ -8,7 +8,10 @@
 <section layout:fragment="conteudo">
 
 	
-		<div class="card container col-sm-3 mt-5 p-0">
+		<div class="card container-fluid col-sm-3 mt-5 p-0">
+		
+				<div th:if="${param.error}" class="alert alert-danger mr-3 ml-3">
+				<span>Usuario ou senha invalida.</span></div>
 				<div class="card-header text-center">
 					Sign In
 				</div>

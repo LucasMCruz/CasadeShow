@@ -4,45 +4,49 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="Layout">
 
+	
 <section layout:fragment="conteudo">
-	<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
-		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
-			<form class="login100-form validate-form">
-				<span class="login100-form-title p-b-37">
-					Cadastro
-				</span>
 
-				<div class="wrap-input100 validate-input m-b-20" data-validate="Coloque seu nome">
-					<input class="input100" type="text" name="username" placeholder="Nome ou email">
-					<span class="focus-input100"></span>
+	
+		<div class="card container-fluid col-sm-3 mt-5 p-0">
+		
+				<div class="card-header text-center">
+					Cadastrar
 				</div>
-
-				<div class="wrap-input100 validate-input m-b-25" data-validate = "Coloque sua senha">
-					<input class="input100" type="password" name="pass" placeholder="Sua senha">
-					<span class="focus-input100"></span>
-				</div>
-				<div class="wrap-input100 validate-input m-b-25" data-validate = "Confirme sua senha">
-					<input class="input100" type="password" name="pass2" placeholder="Confirme a sua senha">
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="container-login100-form-btn">
-					<button type="submit" class="login100-form-btn mb-3">
-						Cadastrar
+			<form action="/registrar" method="POST" >
+				<div class="card-body">
+				<input type="hidden" name="id"/>
+					<div class="from-group row">
+						<h5 class="card-title col-sm-3">Usuario:</h5>
+						<input type="text" class="form-control col-sm-4 mb-2" name="username">
+					</div>
+	
+					<div class="form group row was-valid">
+						<h5 class="card-title col-sm-3">Senha:</h5>
+						<input type="password" class="form-control col-sm-4 mb-2"  name="password" placeholder="password">
+					</div>
+	
+					<div class="container-login100-form-btn">
+					<button class="btn btn-link btn-dark col-sm-12" type="submit">
+							<i class="fas fa-sign-in-alt fa-2x"></i>
+							Cadastrar
 					</button>
+						
+					</div>
+	
+	
+					<div class="text-center">
+						<a href="/entrar" >
+							<i class="fas fa-user-plus fa-1x"></i> <span>Login</span>
+						</a>
+					</div>
+				
 				</div>
-
-
-				<div class="text-center">
-					<a href="/entrar" >
-						<i class="fas fa-sign-in-alt fa-2x"></i> <h5>Logar</h5>
-					</a>
-				</div>
-			</form>
-
 			
+
+			</form>
 		</div>
-	</div>
+	
 	
 	
 
