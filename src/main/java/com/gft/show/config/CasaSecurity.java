@@ -1,9 +1,5 @@
 package com.gft.show.config;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,12 +10,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -64,10 +56,11 @@ public class CasaSecurity extends WebSecurityConfigurerAdapter {
 			
 				.antMatchers("/").permitAll()
 				.antMatchers("/registrar").permitAll()
-				.antMatchers("/historico").permitAll()//.hasAnyRole("USER")
-				.antMatchers("/casas").permitAll()//.hasAnyRole("ADMIN")
+				.antMatchers("/registrar/adm").permitAll()
+				.antMatchers("/historico").hasAnyRole("USER")
+				.antMatchers("/casas").hasAnyRole("[ADMIN]")
 				//.antMatchers("/{codigo}").hasAnyRole("USER2")
-				.antMatchers("/evento").permitAll()//.hasAnyRole("ADMIN")
+				.antMatchers("/eventos").hasAnyRole("ADMIN")
 				.antMatchers("/entrar").permitAll()
 				.anyRequest()
 				.authenticated()

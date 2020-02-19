@@ -24,7 +24,7 @@
 <section layout:fragment="conteudo" >
 
 	<form class="m-8" method="POST" action="/eventos"
-		th:object="${evento}">
+		th:object="${evento}" >
 		<div class="alert alert-success mr-3 ml-3" role="alert"
 				th:if="${!#strings.isEmpty(mensagem)}">
 				<span th:text="${mensagem}">Casa de show cadastrada</span>
@@ -134,8 +134,13 @@
 			</table>
 		</div>
 		<div layout:insert="btnExcluir2"></div>
+		
 		</div>	
-	
+
+		
+		
+		
+		
 </section>
 
 <script src="/js/bootstrap.min.js"></script>

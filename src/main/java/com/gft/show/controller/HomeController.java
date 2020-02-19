@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.jar.Attributes;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,13 +29,13 @@ public class HomeController {
 	private CasaShowRepository cshow;
 	
 	@RequestMapping(value="/")
-	public ModelAndView casas() {
+	public ModelAndView casas(Authentication authenti) {
 		ModelAndView mv = new ModelAndView("Home");
 		List<Evento> todosEventos = events.findAll();
 		mv.addObject("events", todosEventos);
 		List<CasaShow> todasCasas = cshow.findAll();
 		mv.addObject("cshow", todasCasas);
-		
+		System.out.println(authenti.getAuthorities());
 		
 		return mv;
 	}

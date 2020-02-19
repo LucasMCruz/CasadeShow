@@ -1,4 +1,4 @@
-package com.gft.show.model;
+/*package com.gft.show.model;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class Role implements GrantedAuthority{
 	
 	
 	@ManyToMany
-	private List<User> usuarios;
+	private List<Usuario> usuarios;
 
 	public String getNomeRole() {
 		return nomeRole;
@@ -33,3 +33,4 @@ public class Role implements GrantedAuthority{
 	
 	
 }
+*/

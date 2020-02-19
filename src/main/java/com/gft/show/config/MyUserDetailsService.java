@@ -1,15 +1,17 @@
  package com.gft.show.config;
 
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.gft.show.model.User;
 import com.gft.show.model.UserPrincipal;
+import com.gft.show.model.UserPrincipal2;
+import com.gft.show.model.Usuario;
 import com.gft.show.repository.UserRepository;
 
 
@@ -30,16 +32,23 @@ public class MyUserDetailsService implements UserDetailsService {
 		
 		
 		
-		User user = repo.findByUsername(username);
-		if(user==null)
+		Usuario usuarios = repo.findByUsername(username);
+		if(usuarios==null) {
 			throw new UsernameNotFoundException("Usuario nao encontrado");
+		}
+		if(username=="ADMIN") {
+			
+			usuarios = (Usuario) Collections.singleton(new SimpleGrantedAuthority("ADMIN"));
+			return new UserPrincipal2(usuarios);
+		}
+			else {
+				return new UserPrincipal(usuarios);
+			}
+
 		
-		
-		
-		
-		return new UserPrincipal(user);
-	}
-	
+			
+	}				
+	///User (usuarios.getPassword(), usuarios.getUsername(), true, true, true, true, usuarios.getAuthorities());
 	//.getUsername(), user.getPassword(), true, true, true, true, user.ge);
 
 

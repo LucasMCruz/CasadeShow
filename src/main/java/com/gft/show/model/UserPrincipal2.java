@@ -7,14 +7,14 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class UserPrincipal implements UserDetails {
+public class UserPrincipal2 implements UserDetails {
 
 	
 	private Usuario user;
 	
 	
 	
-	public UserPrincipal(Usuario user) {
+	public UserPrincipal2(Usuario user) {
 		super();
 		this.user = user;
 	}
@@ -23,7 +23,7 @@ public class UserPrincipal implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
 		
-			return Collections.singleton(new SimpleGrantedAuthority("USER"));
+			return Collections.singleton(new SimpleGrantedAuthority("ADMIN"));
 		
 
 	}
