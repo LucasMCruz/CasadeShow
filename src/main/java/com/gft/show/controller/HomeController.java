@@ -35,7 +35,6 @@ public class HomeController {
 		mv.addObject("events", todosEventos);
 		List<CasaShow> todasCasas = cshow.findAll();
 		mv.addObject("cshow", todasCasas);
-		System.out.println(authenti.getAuthorities());
 		
 		return mv;
 	}

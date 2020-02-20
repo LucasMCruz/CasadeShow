@@ -12,6 +12,7 @@ public class Usuario{
 	private Long id;
 	private String username;
 	private String password;
+	private boolean adm;
 	//@ManyToMany
 	//@JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name="user_id", referencedColumnName="username"), inverseJoinColumns = @JoinColumn(name="role_id", referencedColumnName="nomeRole"))
 	/*private List<Role> roles;
@@ -47,6 +48,14 @@ public class Usuario{
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public boolean isAdm() {
+		return adm;
+	}
+
+	public void setAdm(boolean adm) {
+		this.adm = adm;
 	}
 	
 	

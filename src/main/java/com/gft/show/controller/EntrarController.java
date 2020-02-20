@@ -51,6 +51,7 @@ public class EntrarController {
 	public ModelAndView cadastrar(@Validated Usuario usuario) {
 		ModelAndView mv = new ModelAndView("cadastro");
 		mv.addObject(new Usuario());
+		mv.addObject("mensagem", "Cadastrado com sucesso");
 		users.save(usuario);
 		return mv;
 		
@@ -58,7 +59,7 @@ public class EntrarController {
 	@RequestMapping(value="/registrar/adm", method = RequestMethod.POST)
 	public ModelAndView cadastraadmr(@Validated Usuario usuario) {
 		ModelAndView mv = new ModelAndView("cadastro");
-		mv.addObject(new Usuario());
+		mv.addObject(new UserPrincipal(usuario));
 		
 		users.save(usuario);
 		return mv;
