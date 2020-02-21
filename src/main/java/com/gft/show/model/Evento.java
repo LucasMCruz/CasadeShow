@@ -2,6 +2,7 @@ package com.gft.show.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -55,6 +57,9 @@ public class Evento {
 	@ManyToOne
 	@NotNull(message = "Selecione ou crie uma Casa de Show")
 	private CasaShow casaShow;
+	
+	//@ManyToMany
+	//private List<Historico> historico;
 	
 	private int qtdingresso = capacidade;
 
