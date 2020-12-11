@@ -18,7 +18,7 @@ import com.gft.show.repository.CasaShowRepository;
 
 @Controller
 public class CasaShowController {
-	
+	//Controller
 	@Autowired
 	private CasaShowRepository cshow;
 	
